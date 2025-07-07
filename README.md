@@ -1,56 +1,144 @@
-# Fitness_Planner
-Fitness Planner assists your workout by
-- generating a sensible and easily modifiable weightlifting plan
-- determining ideal warmup weights and rest times (based off the research discussed in "Bigger, Leaner, Stronger").
-- tracking your workout progress
+# Excercise_Diary_Planner
 
-This uses a CLI for now because I work out at home.
 
-## Configuration
+The Exercise Diary Planner is a Python-based command-line application that allows users to plan, log, and track their workouts over time. It supports multiple users, keeps a history of exercises, shows summary statistics, and allows users to monitor progress based on sets and weights.
 
-This uses two YAML files that you can easily modify to fit your needs:
+The project is built on top of a forked GitHub repository and has been significantly extended and improved for a resubmission project to demonstrate practical use of Python features such as file I/O, modularization, data visualization, and user input handling.
 
-routine.yaml -- creates a map from a muscle group to number of exercises to perform on it. In this example, Tuesdays are rest days
-```
-Sunday:
-  chest: 3
-  triceps: 2
-Monday:
-  back: 3
-  biceps: 2
-Wednesday:
-  ...
-```
+  ~ Features ~
 
-exercises.yaml lists potential exercises for each muscle group.
-```
-chest:
-- "push ups"
-- "low-incline dumbbell bench press"
-- "dumbbell pullovers"
-- "= dumbbell bench press hold"
-back:
-- "pull-ups"
-- "^ one-arm dumbbell row"
-- "** deadlift"
-- "dumbbell incline row"
-- "reverse grip bent-over rows"
-```
 
-These exercises are selected randomly, based on routine.yaml and current day of week
-Exercises can begin with an optional modifier for different treatment:
-```
-*  - an exercise that must be performed
-** - the exercise must be done before the others (within that muscle group). Intended for compound exercises
-^  - user-preferred exercise (higher probability of being selected)
-=  - last exercise for that muscle group. Intended for isolation exercises
-```
+- Menu-based navigation
 
-## How to Run:
 
-```
-pip install numpy pyYaml
-git clone https://github.com/evliang/fitness_planner.git
-cd fitness_planner
-python fitness_planner.py
-```
+- User login support (per-user workout history)
+ 
+
+- View workout history by date and exercise
+ 
+
+- View total sets completed per exercise
+ 
+
+- Input validation (for weights/reps)
+ 
+
+- Rest timer between sets
+
+
+- Exercise progress plotting (optional / bonus)
+ 
+
+- Modularized code for maintainability
+
+ 
+ 
+ ~ How to Run the App ~
+
+ 
+ 
+ Prerequisites:
+
+
+- Python 3.x installed
+
+
+- Terminal or command prompt access
+
+
+- matplotlib installed for plotting (optional)
+
+Install requirements:
+
+
+- pip install matplotlib
+ 
+ 
+ Run the app:
+
+
+- python fitness_planner.py
+
+When prompted:
+Enter your name. This will create a personalized workout history file named like alex_data.json.
+
+~ Menu Options ~
+
+=== Exercise Planner Menu ===
+1. Start today's workout
+2. View exercise history
+3. View summary statistics
+4. Plot progress for an exercise
+5. Exit
+
+~ Technologies Used ~
+
+
+- Python 3
+
+
+- json and yaml for data handling
+
+
+- matplotlib for plotting progress
+
+
+- Command-line interface (CLI)
+
+
+- Modular file structure:
+
+
+- fitness_planner.py – main program
+
+
+- utils.py – countdown timer, helpers
+
+
+- history.py – handles saving and loading data
+
+
+- visuals.py – handles plotting
+
+ ~ User Profiles ~
+
+ Each user has their own file:
+
+e.g. mimi_data.json, john_data.json
+This allows multiple people to use the program without overwriting each other’s logs.
+
+Bonus: Data Visualization
+Users can view line graphs of average weight lifted over time for each exercise. This feature uses matplotlib and is optional if dependencies aren't installed.
+
+~ Improvements Made (compared to original repo) ~
+
+
+
+- Completely refactored into separate files (modularized)
+
+
+- Added menu system and CLI interface
+
+
+- Implemented user profiles and personalized history files
+
+
+- Added input validation and error handling
+
+
+- Created summary statistics and optional progress graphs
+
+
+- Improved UX with clearer prompts and structure
+
+ ~ Known Issues / Limitations ~
+
+
+
+- Plotting may fail if the user has no recorded data or if matplotlib isn't installed
+
+
+- Does not include GUI (command line only)
+
+
+- Exercises and routines must still be defined in YAML manually
